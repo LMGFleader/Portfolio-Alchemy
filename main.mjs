@@ -6,33 +6,70 @@ const clueURL = `${baseURL}/clue`;
 
 let token = null;
 
-const userConfig = {
-    "email": "lucasm@uia.no", //Insert School Mail here
-    "nick": "LMG",  "pin": "74123" //Give yourself a nickname and pin
-};
+// start
+const userConfig = { email: "lucasm@uia.no", nick: "LMG", pin: "74123" };
 
-let respons = await (await fetch(startURL, {
+let response = await (
+  await fetch(startURL, {
     body: JSON.stringify(userConfig),
     method: "POST",
     headers: {
-        "Content-Type": "application/json"
-    }
-})).json();
+      "Content-Type": "application/json",
+    },
+  })
+).json();
 
-token = respons.token;
-
+token = response.token;
 console.log(token);
-console.log(startURL);
 
-respons = await (await fetch(submitURL, {
+// status- what question to answer
+response = await (
+  await fetch(statusURL, {
     method: "GET",
     headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-        "Authorization": token,
-    }
-})).json();
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  })
+).json();
 
-console.log(respons);
+console.log(response);
 
+//Answer- answers to the question
+response = await (
+  await fetch(submitURL, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+    body: JSON.stringify({ answer: 4 }),
+  })
+).json();
 
+// status- what question to answer
+response = await (
+  await fetch(statusURL, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  })
+).json();
+
+//Answer- answers to the question
+response = await (
+  await fetch(submitURL, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+    body: JSON.stringify({ answer: 3 }),
+  })
+).json();
