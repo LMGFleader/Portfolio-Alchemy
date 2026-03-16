@@ -73,3 +73,17 @@ response = await (
     body: JSON.stringify({ answer: 3 }),
   })
 ).json();
+
+await new Promise(resolve => setTimeout(resolve, 3000));
+//pi
+response = await (
+  await fetch(submitURL, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+    body: JSON.stringify({ answer: "pi" }), 
+  })
+).json();
