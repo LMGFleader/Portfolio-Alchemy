@@ -87,3 +87,16 @@ response = await (
     body: JSON.stringify({ answer: "pi" }), 
   })
 ).json();
+// alchemysimbols 
+await new Promise(resolve => setTimeout(resolve, 3000));
+response = await (
+  await fetch(submitURL, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+    body: JSON.stringify({ answer: "GoldQuicksilverSilverIronGold" }), 
+  })
+).json();
