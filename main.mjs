@@ -18,7 +18,7 @@ let response = await (
     },
   })
 ).json();
-
+//token -  bHVjYXNtQHVpYS5uby0xNzczNjkwNjQxMDYz
 token = response.token;
 console.log(token);
 
@@ -45,7 +45,7 @@ response = await (
       "Content-Type": "application/json",
       Authorization: token,
     },
-    body: JSON.stringify({ answer: 4 }),
+    body: JSON.stringify({ answer: "4" }),
   })
 ).json();
 
@@ -61,7 +61,7 @@ response = await (
   })
 ).json();
 
-//Answer- answers to the question
+//#region 1 Answer- answers to the question 
 response = await (
   await fetch(submitURL, {
     method: "POST",
@@ -70,11 +70,13 @@ response = await (
       "Content-Type": "application/json",
       Authorization: token,
     },
-    body: JSON.stringify({ answer: 3 }),
+    body: JSON.stringify({ answer: "3" }),
   })
 ).json();
 
-await new Promise(resolve => setTimeout(resolve, 3000));
+
+//#endregion
+
 //pi
 response = await (
   await fetch(submitURL, {
@@ -88,7 +90,7 @@ response = await (
   })
 ).json();
 // alchemysimbols 
-await new Promise(resolve => setTimeout(resolve, 3000));
+
 response = await (
   await fetch(submitURL, {
     method: "POST",
@@ -101,7 +103,7 @@ response = await (
   })
 ).json();
 //S I L V E R  capskeys
-await new Promise(resolve => setTimeout(resolve, 3000));
+
 
 response = await (
   await fetch(submitURL, {
@@ -114,3 +116,17 @@ response = await (
     body: JSON.stringify({ answer: "Silver" }), 
   })
 ).json();
+//Rune andersen secret signaling system
+// clue - get hint for current challenge
+response = await (
+  await fetch(clueURL, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  })
+).json();
+
+console.log("CLUE:", response);
