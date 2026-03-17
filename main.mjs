@@ -6,7 +6,7 @@ const clueURL = `${baseURL}/clue`;
 
 let token = null;
 
-// start
+//#region start
 const userConfig = { email: "lucasm@uia.no", nick: "LMG", pin: "74123" };
 
 let response = await (
@@ -19,6 +19,7 @@ let response = await (
   })
 ).json();
 //token -  bHVjYXNtQHVpYS5uby0xNzczNjkwNjQxMDYz
+//#endregion
 token = response.token;
 console.log(token);
 
@@ -36,7 +37,7 @@ response = await (
 
 console.log(response);
 
-//Answer- answers to the question
+//#region Answer- answers to the question
 response = await (
   await fetch(submitURL, {
     method: "POST",
@@ -60,6 +61,7 @@ response = await (
     },
   })
 ).json();
+//#endregion
 
 //#region 1 Answer- answers to the question 
 response = await (
@@ -77,7 +79,7 @@ response = await (
 
 //#endregion
 
-//pi
+//#region pi
 response = await (
   await fetch(submitURL, {
     method: "POST",
@@ -89,7 +91,8 @@ response = await (
     body: JSON.stringify({ answer: "pi" }), 
   })
 ).json();
-// alchemysimbols 
+//#endregion
+//#region alchemysimbols 
 
 response = await (
   await fetch(submitURL, {
@@ -102,7 +105,8 @@ response = await (
     body: JSON.stringify({ answer: "GoldQuicksilverSilverIronGold" }), 
   })
 ).json();
-//S I L V E R  capskeys
+//#endregion
+//#region S I L V E R  capskeys
 
 
 response = await (
@@ -116,7 +120,8 @@ response = await (
     body: JSON.stringify({ answer: "Silver" }), 
   })
 ).json();
-//Rune andersen secret signaling system
+//#endregion
+//#region Rune andersen secret signaling system
 // clue - get hint for current challenge
 response = await (
   await fetch(clueURL, {
@@ -130,3 +135,4 @@ response = await (
 ).json();
 
 console.log("CLUE:", response);
+//#endregion
